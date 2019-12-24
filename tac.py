@@ -35,8 +35,11 @@ b6 = Button(pane,text=" ")
 b7 = Button(pane,text=" ")
 b8 = Button(pane,text=" ")
 b9 = Button(pane,text=" ")
+b10 = Button(pane,text="New Game")
 
+global available
 available = [b1,b2,b3,b4,b5,b6,b7,b8,b9]
+
 def win():
     try:
         if (b1['text']=="O" and b4['text']=="O" and b7['text']=="O"
@@ -81,6 +84,7 @@ def comp_move():
     
 def Change(button):
     if button == "b1":
+        print(available)
         available.remove(b1)
         b1.config(image=photoimage,state=DISABLED,text="O")
         comp_move()
@@ -127,6 +131,22 @@ def Change(button):
         comp_move()
         win()
 
+def New():
+    b1.config(image=photoimage2,state="normal",text=" ")
+    b2.config(image=photoimage2,state="normal",text=" ")
+    b3.config(image=photoimage2,state="normal",text=" ")
+    b4.config(image=photoimage2,state="normal",text=" ")
+    b5.config(image=photoimage2,state="normal",text=" ")
+    b6.config(image=photoimage2,state="normal",text=" ")
+    b7.config(image=photoimage2,state="normal",text=" ")
+    b8.config(image=photoimage2,state="normal",text=" ")
+    b9.config(image=photoimage2,state="normal",text=" ")
+    l2.config(text="You are O and computer in X")
+    global available
+    available = [b1,b2,b3,b4,b5,b6,b7,b8,b9]
+    print(available)
+    
+    
 
 b1.grid(row = 0, column = 0, sticky = W)
 b2.grid(row = 0, column = 1, sticky = W)
@@ -137,6 +157,7 @@ b6.grid(row = 1, column = 2, sticky = W)
 b7.grid(row = 2, column = 0, sticky = W)
 b8.grid(row = 2, column = 1, sticky = W)
 b9.grid(row = 2, column = 2, sticky = W)
+b10.grid(row = 3, column = 1, sticky = W)
 
 b1.config(image=photoimage2,command=lambda: Change("b1"))
 b2.config(image=photoimage2,command=lambda: Change("b2"))
@@ -147,6 +168,7 @@ b6.config(image=photoimage2,command=lambda: Change("b6"))
 b7.config(image=photoimage2,command=lambda: Change("b7"))
 b8.config(image=photoimage2,command=lambda: Change("b8"))
 b9.config(image=photoimage2,command=lambda: Change("b9"))
+b10.config(command=lambda: New())
 
 
 mainloop()
